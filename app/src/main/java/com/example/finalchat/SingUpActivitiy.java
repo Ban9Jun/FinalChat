@@ -1,5 +1,6 @@
 package com.example.finalchat;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -9,18 +10,22 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.finalchat.model.UserModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class SingUpActivitiy extends AppCompatActivity {
 
     FirebaseAuth firebaseAuth;
     EditText editTextEmail;
     EditText editTextPassword;
+    EditText editTextName;
     Button buttonJoin;
 
+    @SuppressLint("MissingInflatedId")
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sing_up);
@@ -28,6 +33,7 @@ public class SingUpActivitiy extends AppCompatActivity {
             firebaseAuth = FirebaseAuth.getInstance();
             editTextEmail = (EditText) findViewById(R.id.email);
             editTextPassword = (EditText) findViewById(R.id.password);
+            editTextName = (EditText) findViewById(R.id.name);
             buttonJoin = (Button) findViewById(R.id.Registerbtn);
 
             buttonJoin.setOnClickListener(new View.OnClickListener() {
@@ -51,6 +57,11 @@ public class SingUpActivitiy extends AppCompatActivity {
                             if (task.isSuccessful()) {
                                 // 회원가입 성공시
                                 Toast.makeText(SingUpActivitiy.this, "회원가입 성공", Toast.LENGTH_SHORT).show();
+                                UserModel userModel = new UserModel();
+                                userModel.userName = editTextName.getText().toString();
+                                userModel.uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+                                FirebaseDatabase.getInstance().getReference().child("users").child(userModel.uid).setValue(userModel);
                                 finish();
                             } else {
                                 // 계정이 중복된 경우

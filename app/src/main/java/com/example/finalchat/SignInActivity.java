@@ -28,7 +28,7 @@ public class SignInActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_signin);
 
         firebaseAuth = FirebaseAuth.getInstance();
 
@@ -62,7 +62,7 @@ public class SignInActivity extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
-                    Intent intent = new Intent(SignInActivity.this, ChatActivity.class);
+                    Intent intent = new Intent(SignInActivity.this, MainActivity.class);
                     startActivity(intent);
                     finish();
                 } else {
@@ -79,7 +79,7 @@ public class SignInActivity extends AppCompatActivity {
                             // 로그인 성공
                             Toast.makeText(SignInActivity.this, "로그인 성공", Toast.LENGTH_SHORT).show();
                             //firebaseAuth.addAuthStateListener(firebaseAuthListener);
-                            Intent intent = new Intent(SignInActivity.this, ChatActivity.class);
+                            Intent intent = new Intent(SignInActivity.this, MainActivity.class);
                             startActivity(intent);
                             finish();
                         } else {
