@@ -21,14 +21,25 @@
 
     <EditText
         android:id="@+id/post_text"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="내용을 입력하세요"/>
+        android:layout_gravity="center"
+        android:minHeight="48dp"
+        android:ems="15"
+        android:hint="음식 이름을 입력하세요"/>
+    <EditText
+        android:id="@+id/material_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:minHeight="48dp"
+        android:ems="15"
+        android:hint="재료를 입력하세요"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="\n\n\n\n\n"/>
+        android:text="\n"/>
 
     <Button
         android:id="@+id/upload_btn"

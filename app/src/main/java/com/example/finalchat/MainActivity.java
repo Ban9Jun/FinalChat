@@ -28,15 +28,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onNavigationItemReselected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
-                    case R.id.action_account:
+                    case R.id.action_Recipe:
                         getSupportFragmentManager().beginTransaction().replace(R.id.mainactivity_framelayout, new HomeFragment()).commit();
                         break;
 
-                    case R.id.action_people:
+                    case R.id.action_Chatting:
                         getSupportFragmentManager().beginTransaction().replace(R.id.mainactivity_framelayout, new PeopleFragment()).commit();
                         break;
 
-                    case R.id.action_chat:
+                    case R.id.action_Upload:
                         getSupportFragmentManager().beginTransaction().replace(R.id.mainactivity_framelayout, new PostFragment()).commit();
                 }
             }

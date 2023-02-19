@@ -23,6 +23,7 @@ import com.bumptech.glide.Glide;
 import com.example.finalchat.R;
 import com.example.finalchat.chat.MessageActivity;
 import com.example.finalchat.model.ContentDTO;
+import com.example.finalchat.model.UserModel;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;

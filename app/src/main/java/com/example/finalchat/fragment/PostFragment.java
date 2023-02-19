@@ -1,6 +1,7 @@
 package com.example.finalchat.fragment;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -25,6 +26,7 @@ import com.example.finalchat.R;
 import com.example.finalchat.model.ContentDTO;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -42,10 +44,12 @@ public class PostFragment extends Fragment {
     Button call_img_btn;
     Button upload_btn;
     EditText post_text;
+    EditText material_text;
     ImageView imageView;
     View viewprofile;
     private int pickImageFromAlbum = 0;
 
+    @SuppressLint("MissingInflatedId")
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -60,6 +64,7 @@ public class PostFragment extends Fragment {
         imageView = view.findViewById(R.id.imgview);
         upload_btn = view.findViewById(R.id.upload_btn);
         post_text = view.findViewById(R.id.post_text);
+        material_text = view.findViewById(R.id.material_text);
 
 
         // 이미지 불러오기 버튼
@@ -119,6 +124,7 @@ public class PostFragment extends Fragment {
                         contentDTO.uid = auth.getCurrentUser().getUid();
                         contentDTO.userId = auth.getCurrentUser().getEmail();
                         contentDTO.explain = post_text.getText().toString();
+                        contentDTO.material = material_text.getText().toString();
                         contentDTO.timestamp = System.currentTimeMillis();
                         firestore.collection("images").document().set(contentDTO);
 
