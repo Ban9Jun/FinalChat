@@ -55,6 +55,9 @@ public class MessageActivity extends AppCompatActivity {
         editText = findViewById(R.id.messageActivity_editText);
 
         recyclerView = (RecyclerView)findViewById(R.id.messageActivity_recyclerview);
+
+
+        // 버튼
         button.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -92,7 +95,9 @@ public class MessageActivity extends AppCompatActivity {
         checkChatRoom();
     }
 
-    void checkChatRoom(){ // 채팅방 중복 생성방지 함수
+
+    // 채팅방 중복 생성방지 함수
+    void checkChatRoom(){
         FirebaseDatabase.getInstance().getReference().child("chatrooms").orderByChild("users/"+uid).equalTo(true).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

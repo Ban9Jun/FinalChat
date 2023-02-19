@@ -36,6 +36,8 @@ public class SingUpActivitiy extends AppCompatActivity {
             editTextName = (EditText) findViewById(R.id.name);
             buttonJoin = (Button) findViewById(R.id.Registerbtn);
 
+
+            // 회원가입 버튼
             buttonJoin.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -49,6 +51,9 @@ public class SingUpActivitiy extends AppCompatActivity {
                 }
             });
         }
+
+
+        // 회원가입 기능 함수
         private void createUser(String email, String password) {
             firebaseAuth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {

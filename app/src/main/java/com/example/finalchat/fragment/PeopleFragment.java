@@ -1,5 +1,6 @@
 package com.example.finalchat.fragment;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -76,7 +77,7 @@ public class PeopleFragment extends Fragment {
         }
 
         @Override
-        public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+        public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
             ((CustomViewHolder)holder).textView.setText(userModels.get(position).userName);
 
             holder.itemView.setOnClickListener(new View.OnClickListener(){
